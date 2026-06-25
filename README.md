@@ -186,7 +186,7 @@ RedRob-Hired/
 ├── candidate_schema.json               ← Candidate data structure
 ├── candidates.jsonl                    ← Full production data (100K+)
 ├── sample_candidates.json              ← 50 samples for testing
-├── submission_metadata_template.yaml   ← Submission metadata spec
+├── submission_metadata.yaml   ← Submission metadata spec
 ├── validate_submission.py              ← Output validation script
 │
 ├── redrob/                             ← Main package
