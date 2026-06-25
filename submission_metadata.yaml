@@ -1,0 +1,126 @@
+# ============================================================================
+# Team identity
+# ============================================================================
+team_name: "EklaCholo"
+
+primary_contact:
+  name: "Sakshi Mahesh Soni"
+  email: "sakshirs1234@gmail.com"
+  phone: "+91-8799977699"
+
+team_members:
+  - name: "Sakshi Soni"
+    email: "sakshirs1234@gmail.com"
+    role: "Full Stack AI Engineer"
+  - name: "Swikruti Soni"
+    email: "swikrutisoni@gmail.com"
+    role: "Prompt Engineer"
+
+# ============================================================================
+# Code and reproducibility
+# ============================================================================
+github_repo: "https://github.com/thesonisakshi/hired"
+
+reproduce_command: "python rank.py --candidates ./candidates.jsonl --out ./submission.csv"
+
+# ============================================================================
+# Compute environment
+# ============================================================================
+compute:
+  platform: "HP Pavillion 14"
+  cpu_cores: 8
+  ram_gb: 16
+  python_version: "3.11.4"
+  os: "Windows 11"
+  uses_gpu_for_inference: false
+  has_network_during_ranking: false
+  pre_computation_required: true
+  pre_computation_time_minutes: 35
+
+# ============================================================================
+# AI tools declaration
+# ============================================================================
+ai_tools_used:
+  - "Claude"
+  - "Cursor"
+
+ai_usage_summary: |
+  Used Claude for architecture design, system philosophy, and approach
+  brainstorming across all six scoring layers. Used Cursor with Claude
+  for code generation and implementation. All engineering decisions,
+  layer design, signal selection, weight tuning, and evaluation logic
+  were authored and validated by the team. The core ideas — evidence
+  narrative construction, specificity entropy scoring, cross-field
+  consistency graph, behavioral archetype classification, and the
+  variance penalty — were developed through original reasoning in
+  collaboration with Claude as a thinking partner, not as a code
+  generator.
+
+# ============================================================================
+# Approach summary
+# ============================================================================
+methodology_summary: |
+  Six-layer candidate intelligence engine that reads people, not documents.
+  The system rejects keyword matching in favour of signals the candidate
+  did not consciously control or optimise.
+
+  Layer 1 — JD facet decomposition: the job description is split into five
+  independent semantic query vectors (core technical, evaluation rigor,
+  product engineer, mindset, anti-patterns), each weighted separately.
+  Anti-patterns facet is negatively weighted to penalise consulting-only
+  backgrounds and tutorial-level AI experience.
+
+  Layer 2 — Evidence narrative construction: candidate profiles are not
+  embedded raw. A structured narrative is built from action-verb sentences
+  only (built, deployed, shipped, optimised…), project descriptions, and
+  issuer-backed certifications. Skill lists and summary statements are
+  excluded. This rewards genuine practitioners and penalises keyword stuffers
+  regardless of vocabulary.
+
+  Layer 3 — Specificity entropy scoring: five regex-based dimensions measure
+  numeric density, versioned technology mentions, failure/tradeoff language,
+  temporal precision, and team scope references. Real practitioners remember
+  specifics; fabricators write in generalities. This signal is ungameable
+  without producing internally consistent invented details.
+
+  Layer 4 — Cross-field consistency graph: six cross-field checks detect
+  global contradictions — expert skill count vs experience length, leadership
+  claims vs career stage, scale claims vs company type, OSS claims vs GitHub
+  activity, senior titles vs years, cert farming vs project evidence. Each
+  broken edge reduces the consistency score.
+
+  Layer 5 — Constraint violation and honeypot detection: hard disqualification
+  for timeline impossibilities, experience exceeding career span, and expert
+  claims with zero textual evidence. Explicit JD disqualifiers (services-only
+  career, no production deployment, CV/speech primary domain) also produce
+  hard zeros.
+
+  Layer 6 — Behavioral archetype classification: the 23 platform signals are
+  classified into seven named archetypes (active seeker, highly selective,
+  passive fit, notice risk, serial applier, dormant star, ghost) each with a
+  hirability multiplier ranging from 0.20 to 1.30. Applied multiplicatively
+  as the final gate — a brilliant dormant candidate ranks below a slightly
+  weaker active one.
+
+  Composite score = weighted sum of five dimensions (semantic 0.30,
+  specificity 0.20, consistency 0.20, trajectory 0.15, logistics 0.15),
+  minus a variance penalty (up to 0.20) that punishes dimensional
+  disagreement — a candidate must be trustworthy across all dimensions,
+  not just strong on one. Final score multiplied by behavioral archetype
+  factor. Honeypots and hard disqualifications are zeroed before ranking.
+
+  Pre-computation (~35 min, one-time): evidence narratives built and
+  embedded with BAAI/bge-small-en-v1.5, all feature scores computed and
+  saved to parquet. Ranking step (~16 seconds): single matrix multiply
+  across 100K candidates, vectorised pandas scoring, top-100 selection,
+  grounded reasoning generation from computed scalars only.
+
+# ============================================================================
+# Declarations
+# ============================================================================
+declarations:
+  read_submission_spec: true
+  code_is_original_work: true
+  no_collusion: true
+  honeypot_check_done: true
+  reproduction_tested: true
